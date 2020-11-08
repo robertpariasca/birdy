@@ -2,11 +2,11 @@
 
 require_once '../data/Conexion.class.php';
 
-class PropuestaDetalle extends Conexion{
+class PropuestaDetalleProducto extends Conexion{
 
     private $nropropuestaproductos;
     private $nropropuesta;
-    private $codsolicitante;
+    private $codproducto;
     private $nomproducto;
     private $cantidadproducto;
 
@@ -30,16 +30,6 @@ class PropuestaDetalle extends Conexion{
         $this->nropropuesta = $nropropuesta;
     }
 
-    public function getCodsolicitante()
-    {
-        return $this->codsolicitante;
-    }
-
-    public function setCodsolicitante($codsolicitante)
-    {
-        $this->codsolicitante = $codsolicitante;
-    }
-
     public function getNomproducto()
     {
         return $this->nomproducto;
@@ -59,4 +49,46 @@ class PropuestaDetalle extends Conexion{
     {
         $this->cantidadproducto = $cantidadproducto;
     }
+
+    public function getCodproducto()
+    {
+        return $this->codproducto;
+    }
+
+    public function setCodproducto($codproducto)
+    {
+        $this->codproducto = $codproducto;
+    }
+
+    public function agregar()
+    {
+        $this->dblink->beginTransaction();
+
+        try {
+
+                    $sql = "select fn_registrarPropuestaProductos(                    
+                                    :p_nropropuesta,
+                                    :p_codproducto,
+                                    :p_nomproducto,
+                                    :p_canproducto
+                                 );";
+                    $sentencia = $this->dblink->prepare($sql);
+                    $sentencia->bindParam(":p_nropropuesta", $this->getNropropuesta());
+                    $sentencia->bindParam(":p_codproducto", $this->getCodproducto());
+                    $sentencia->bindParam(":p_nomproducto", $this->getNomproducto());
+                    $sentencia->bindParam(":p_canproducto", $this->getCantidadproducto());
+                    $sentencia->execute();
+                    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                    $this->dblink->commit();
+                    return $resultado;
+  
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+
+        return false;
+    }
+
 }

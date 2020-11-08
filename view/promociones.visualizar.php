@@ -116,10 +116,10 @@ $_POST["s_usuario"] = $dniSesion;
                                             <td class="h2"><?php echo  $resultadoProm[$j]["nom_promocion"] ?> </td>
                                           </tr>
                                           <tr>
-                                            <td class="h5">Precio Antes: <?php echo  $resultadoProm[$j]["costo_promocion"] ?> S/ </td>
+                                            <td class="h5">Precio Ahora: <?php echo  $resultadoProm[$j]["costo_promocion"] ?> S/ </td>
                                           </tr>
                                           <tr>
-                                            <td class="h5">Precio Ahora: <?php echo  $resultadoProm[$j]["costo_real"] ?> S/ </td>
+                                            <td class="h5">Precio Antes: <?php echo  $resultadoProm[$j]["costo_real"] ?> S/ </td>
                                           </tr>
                                           <tr>
                                             <td>Vigencia: Hasta el <?php echo  $resultadoProm[$j]["fecha_fin_vigencia"] ?></td>

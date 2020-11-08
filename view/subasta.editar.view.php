@@ -79,6 +79,7 @@ $_POST["s_usuario"] = $dniSesion;
                         <form id="frmActualizarPromocion" enctype="multipart/form-data">
                           <div class="input-group mb-3">
                             <select name="select" id="cboTipoSubasta" class="form-control">
+                              <option value="0"> Seleccione Tipo </option>
                               <option value="1"> Carga </option>
                               <option value="2"> Producto </option>
                               <option value="3"> Servicio </option>
@@ -105,11 +106,19 @@ $_POST["s_usuario"] = $dniSesion;
                       <div id='dtCarga' class="col-12 row justify-content-center">
                         <div class="box box-primary col-6">
                           <div class="box-header with-border">
-                            <h3 class="box-title">Detalles de subasta</h3>
+                            <h3 class="box-title">Detalles de carga</h3>
                           </div>
 
                           <div class="input-group mb-3">
                             <input type="text" name="textvolumen" id="textvolumen" class="form-control" placeholder="Volumen">
+                            <div class="input-group-append">
+                              <div class="input-group-text">
+                                <span class="fas fa-map-marker-alt"></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="input-group mb-3">
+                            <input type="text" name="textdimension" id="textdimension" class="form-control" placeholder="Dimensiones">
                             <div class="input-group-append">
                               <div class="input-group-text">
                                 <span class="fas fa-map-marker-alt"></span>
@@ -172,7 +181,7 @@ $_POST["s_usuario"] = $dniSesion;
                             </div>
                           </div>
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="horasalida" data-inputmask-alias="datetime" data-inputmask-inputformat="hh:mm:ss" data-mask="" im-insert="false" placeholder="Hora Salida">
+                            <input type="text" class="form-control" id="horasalida" data-inputmask-alias="datetime" data-inputmask-inputformat="hh:ss:ss" data-mask="" im-insert="false" placeholder="Hora Salida">
                             <div class="input-group-append">
                               <div class="input-group-text">
                                 <span class="far fa-calendar-alt"></span>
@@ -218,7 +227,7 @@ $_POST["s_usuario"] = $dniSesion;
                             </div>
                           </div>
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="horallegada" data-inputmask-alias="datetime" data-inputmask-inputformat="hh:mm:ss" data-mask="" im-insert="false" placeholder="Hora Llegada">
+                            <input type="text" class="form-control" id="horallegada" data-inputmask-alias="datetime" data-inputmask-inputformat="hh:ss:ss" data-mask="" im-insert="false" placeholder="Hora Llegada">
                             <div class="input-group-append">
                               <div class="input-group-text">
                                 <span class="far fa-calendar-alt"></span>
@@ -228,62 +237,60 @@ $_POST["s_usuario"] = $dniSesion;
                         </div>
                       </div>
                       <div id="dtProducto" class="col-12 row justify-content-center">
-                      <div class="box box-primary col-6">
-                        <div class="box-header with-border">
-                          <h3 class="box-title">Productos Subasta</h3>
+                        <div class="box box-primary col-6">
+                          <div class="box-header with-border">
+                            <h3 class="box-title">Productos Subasta</h3>
+                          </div>
+                          <div class="input-group mb-3">
+                            <select name="select" id="cboproductossubasta" class="form-control">
+                              <option value="000"> Elegir Producto </option>
+                            </select>
+                          </div>
+                          <div class="input-group mb-3">
+                            <input type="text" name="textCantProducto" id="textCantProducto" class="form-control" placeholder="Cantidad Producto" onkeypress="ValidaSoloNumerosYPunto();">
+                            <div class="input-group-append">
+                              <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row justify-content-center">
+                            <!-- /.col -->
+
+                            <div class="col-6" id="divagregarProductoSubasta">
+                              <button class="mt-1 btn btn-primary" type="button" name="agregarProductoSubasta" id="agregarProductoSubasta" style="display: block; margin: 0 auto;">Agregar Producto</button>
+                            </div>
+                            <!-- /.col -->
+                          </div>
                         </div>
-                        <div class="input-group mb-3">
-                          <select name="select" id="cboproductossubasta" class="form-control">
-                            <option value="000"> Elegir Producto </option>
-                          </select>
-                        </div>
-                        <div class="input-group mb-3">
-                          <input type="text" name="textCantProducto" id="textCantProducto" class="form-control" placeholder="Cantidad Producto" onkeypress="ValidaSoloNumerosYPunto();">
-                          <div class="input-group-append">
-                            <div class="input-group-text">
-                              <span class="fas fa-user"></span>
+                      </div>
+                      <div id="dtDetProducto" class="col-12 row justify-content-center">
+                        <div class="main-card mb-9 card">
+                          <div class="card-body">
+                            <h5 class="card-title">Detalles Producto Requerido</h5>
+                            <div class="table-responsive">
+                              <table id="detprodsubasta" class="mb-0 table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th style="display:none;">CodProducto</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
+                                    <th>Opciones</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                              </table>
                             </div>
                           </div>
                         </div>
-                        <div class="row justify-content-center">
-                          <!-- /.col -->
-
-                          <div class="col-6" id="divagregarProductoSubasta">
-                            <button class="mt-1 btn btn-primary" type="button" name="agregarProductoSubasta" id="agregarProductoSubasta" style="display: block; margin: 0 auto;">Agregar Producto</button>
-                          </div>
-                          <!-- /.col -->
-                        </div>
                       </div>
+                      <div class="col-6" id="divagregarSubastaNueva">
+                        <button class="mt-1 btn btn-primary" type="button" name="agregarSubastaNueva" id="agregarSubastaNueva" style="display: block; margin: 0 auto;">Crear Subasta</button>
                       </div>
-                      <div id="dtDetProducto" class="col-12 row justify-content-center">
-                      <div class="main-card mb-9 card">
-                        <div class="card-body">
-                          <h5 class="card-title">Detalles Producto Requerido</h5>
-                          <div class="table-responsive">
-                            <table id="detprodsubasta" class="mb-0 table">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th style="display:none;">CodProducto</th>
-                                  <th>Nombre</th>
-                                  <th>Cantidad</th>
-                                  <th>Opciones</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-
-</div>
-
-                      <div class="col-6" id="divagregarPromocionNueva">
-                        <button class="mt-1 btn btn-primary" type="button" name="agregarPromocionNueva" id="agregarPromocionNueva" style="display: block; margin: 0 auto;">Crear Propuesta</button>
-                      </div>
-                      <div class="col-6" id="divagregarlimpiarPromocion">
-                        <button class="mt-1 btn btn-danger" type="button" name="limpiarPromocion" id="limpiarPromocion" style="display: block; margin: 0 auto;">Cancelar</button>
+                      <div class="col-6" id="divagregarlimpiarSubasta">
+                        <button class="mt-1 btn btn-danger" type="button" name="limpiarSubasta" id="limpiarSubasta" style="display: block; margin: 0 auto;">Cancelar</button>
                       </div>
                     </div>
                   </div>

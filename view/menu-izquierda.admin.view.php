@@ -119,7 +119,7 @@
             echo '</p>';
             echo '</a>';
             echo '<ul class="nav nav-treeview">';
-            echo '<li class="nav-item"><a href="subasta.editar.view.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Crear Subasta</p></a></li>';
+            echo '<li class="nav-item"><a href="subasta.listar.view.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Ver Subastas</p></a></li>';
             echo '</ul>';
             echo '</li>';
           }

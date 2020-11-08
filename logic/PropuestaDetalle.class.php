@@ -213,4 +213,64 @@ class PropuestaDetalle extends Conexion{
     {
         $this->detalles = $detalles;
     }
+
+    public function agregar()
+    {
+        $this->dblink->beginTransaction();
+
+        try {
+
+                    $sql = "select fn_registrarPropuestaDetalle(                    
+                                    :p_nropropuesta,
+                                    :p_volumen, 
+                                    :p_dimensiones,
+                                    :p_peso,
+                                    :p_caracteristicas,
+                                    :p_departamentosalida,
+                                    :p_provinciasalida,
+                                    :p_distritosalida,
+                                    :p_direccionsalida,
+                                    :p_fechasalida,
+                                    :p_horasalida,
+                                    :p_departamentollegada,
+                                    :p_provinciallegada,
+                                    :p_distritollegada,
+                                    :p_direccionllegada,
+                                    :p_fechallegada,
+                                    :p_horallegada,
+                                    :p_detalles
+                                 );";
+                    $sentencia = $this->dblink->prepare($sql);
+                    $sentencia->bindParam(":p_nropropuesta", $this->getNropropuesta());
+                    $sentencia->bindParam(":p_volumen", $this->getVolumen());
+                    $sentencia->bindParam(":p_dimensiones", $this->getDimensiones());
+                    $sentencia->bindParam(":p_peso", $this->getPeso());
+                    $sentencia->bindParam(":p_caracteristicas", $this->getCaracteristicas());
+                    $sentencia->bindParam(":p_departamentosalida", $this->getDepartamentosalida());
+                    $sentencia->bindParam(":p_provinciasalida", $this->getProvinciasalida());
+                    $sentencia->bindParam(":p_distritosalida", $this->getDistritosalida());
+                    $sentencia->bindParam(":p_direccionsalida", $this->getDireccionsalida());
+                    $sentencia->bindParam(":p_fechasalida", $this->getFechasalida());
+                    $sentencia->bindParam(":p_horasalida", $this->getHorasalida());
+                    $sentencia->bindParam(":p_departamentollegada", $this->getDepartamentollegada());
+                    $sentencia->bindParam(":p_provinciallegada", $this->getProvinciallegada());
+                    $sentencia->bindParam(":p_distritollegada", $this->getDistritollegada());
+                    $sentencia->bindParam(":p_direccionllegada", $this->getDireccionllegada());
+                    $sentencia->bindParam(":p_fechallegada", $this->getFechallegada());
+                    $sentencia->bindParam(":p_horallegada", $this->getHorallegada());
+                    $sentencia->bindParam(":p_detalles", $this->getDetalles()); 
+                    $sentencia->execute();
+                    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                    $this->dblink->commit();
+                    return $resultado;
+  
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+
+        return false;
+    }
+
 }

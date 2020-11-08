@@ -117,4 +117,66 @@ class Propuesta extends Conexion
             throw $exc;
         }
     }
+    public function agregar()
+    {
+        $this->dblink->beginTransaction();
+
+        try {
+
+                    $sql = "select fn_registrarPropuesta(                    
+                                    :p_codsolicitante,
+                                    :p_tiposubasta, 
+                                    :p_fechacierre,
+                                    :p_observaciones
+                                 ) as codpropuesta;";
+                    $sentencia = $this->dblink->prepare($sql);
+                    // $sentencia->bindParam(":p_codigoCandidato", $this->getCodigoCandidato());
+                    $sentencia->bindParam(":p_codsolicitante", $this->getCodsolicitante());
+                    $sentencia->bindParam(":p_tiposubasta", $this->getTiposubasta());
+                    $sentencia->bindParam(":p_fechacierre", $this->getFechacierre());
+                    $sentencia->bindParam(":p_observaciones", $this->getObservaciones());
+                    $sentencia->execute();
+                    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                    $this->dblink->commit();
+                    return $resultado;
+  
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+
+        return false;
+    }
+    public function listarVista()
+    {
+        try {
+
+            $sql = "
+                        select 
+                            nro_propuesta,
+                            cod_solicitante,
+                            tipo_subasta,
+                            fecha_creacion,
+                            fecha_cierre,
+                            observaciones,
+                            estado
+                        from 
+                            propuesta_cabecera
+                        where
+                            tipo_subasta=:p_tiposubasta
+                        and
+                            estado = '1'
+                        ;
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_tiposubasta", $this->getTiposubasta());
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 }

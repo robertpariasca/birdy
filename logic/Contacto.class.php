@@ -211,5 +211,34 @@ class Contacto extends Conexion
         return false;
     }
 
+    public function listarContactoProveedores()
+    {
+        try {
+            $sql = "
+                    select
+                        nom_contacto,
+                        cargo_contacto,
+                        direccion,
+                        celular,
+                        correo
+                    from
+                        contacto c
+                    inner join
+                        usuario u
+                    on 
+                        c.cod_cliente=u.cod_cliente
+                    where
+                        u.rol = '2'
+                    ;
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 
 }

@@ -18,6 +18,171 @@ $(document).ready(function () {
   $("#divagregarDetalleProm").show();
   $("#divagregarPromocionNueva").show();
   
+  
+$("#tipopublic1").click(function () {
+  if (document.getElementById("tipopublic1").checked) {
+    if (
+      $("#fechaInicioVigencia").val() != "" ||
+      $("#fechaFinVigencia").val() != ""
+    ) {
+      var primfechainicio = $("#fechaInicioVigencia").val();
+      var varfechainicio = primfechainicio.split("/");
+      var diainicio = varfechainicio[0];
+      var mesinicio = varfechainicio[1];
+      var añoinicio = varfechainicio[2];
+
+      var fechainicio1 = new Date(
+        mesinicio + "/" + diainicio + "/" + añoinicio
+      );
+
+      var primfechafin = $("#fechaFinVigencia").val();
+      var varfechafin = primfechafin.split("/");
+      var diafin = varfechafin[0];
+      var mesfin = varfechafin[1];
+      var añofin = varfechafin[2];
+
+      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
+
+      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
+
+      var costo = document.getElementById("servcosto1").innerHTML;
+
+      var monto = diff * costo;
+
+      document.getElementById("servtotal1").innerHTML =
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
+    } else {
+      document.getElementById("servtotal1").innerHTML = "";
+    }
+  } else {
+    document.getElementById("servtotal1").innerHTML = "";
+  }
+  sumaTotal();
+});
+
+$("#tipopublic2").click(function () {
+  if (document.getElementById("tipopublic2").checked) {
+    if (
+      $("#fechaInicioVigencia").val() != "" ||
+      $("#fechaFinVigencia").val() != ""
+    ) {
+      var primfechainicio = $("#fechaInicioVigencia").val();
+      var varfechainicio = primfechainicio.split("/");
+      var diainicio = varfechainicio[0];
+      var mesinicio = varfechainicio[1];
+      var añoinicio = varfechainicio[2];
+
+      var fechainicio1 = new Date(
+        mesinicio + "/" + diainicio + "/" + añoinicio
+      );
+
+      var primfechafin = $("#fechaFinVigencia").val();
+      var varfechafin = primfechafin.split("/");
+      var diafin = varfechafin[0];
+      var mesfin = varfechafin[1];
+      var añofin = varfechafin[2];
+
+      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
+
+      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
+
+      var costo = document.getElementById("servcosto2").innerHTML;
+
+      var monto = diff * costo;
+
+      document.getElementById("servtotal2").innerHTML =
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
+    } else {
+      document.getElementById("servtotal2").innerHTML = "";
+    }
+  } else {
+    document.getElementById("servtotal2").innerHTML = "";
+  }
+  sumaTotal();
+});
+
+$("#tipopublic3").click(function () {
+  if (document.getElementById("tipopublic3").checked) {
+    if (
+      $("#fechaInicioVigencia").val() != "" ||
+      $("#fechaFinVigencia").val() != ""
+    ) {
+      var primfechainicio = $("#fechaInicioVigencia").val();
+      var varfechainicio = primfechainicio.split("/");
+      var diainicio = varfechainicio[0];
+      var mesinicio = varfechainicio[1];
+      var añoinicio = varfechainicio[2];
+
+      var fechainicio1 = new Date(
+        mesinicio + "/" + diainicio + "/" + añoinicio
+      );
+
+      var primfechafin = $("#fechaFinVigencia").val();
+      var varfechafin = primfechafin.split("/");
+      var diafin = varfechafin[0];
+      var mesfin = varfechafin[1];
+      var añofin = varfechafin[2];
+
+      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
+
+      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
+
+      var costo = document.getElementById("servcosto3").innerHTML;
+
+      var monto = diff * costo;
+
+      document.getElementById("servtotal3").innerHTML =
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
+    } else {
+      document.getElementById("servtotal3").innerHTML = "";
+    }
+  } else {
+    document.getElementById("servtotal3").innerHTML = "";
+  }
+  sumaTotal();
+});
+
+$("#tipopublic4").click(function () {
+  if (document.getElementById("tipopublic4").checked) {
+    if (
+      $("#fechaInicioVigencia").val() != "" ||
+      $("#fechaFinVigencia").val() != ""
+    ) {
+      var primfechainicio = $("#fechaInicioVigencia").val();
+      var varfechainicio = primfechainicio.split("/");
+      var diainicio = varfechainicio[0];
+      var mesinicio = varfechainicio[1];
+      var añoinicio = varfechainicio[2];
+
+      var fechainicio1 = new Date(
+        mesinicio + "/" + diainicio + "/" + añoinicio
+      );
+
+      var primfechafin = $("#fechaFinVigencia").val();
+      var varfechafin = primfechafin.split("/");
+      var diafin = varfechafin[0];
+      var mesfin = varfechafin[1];
+      var añofin = varfechafin[2];
+
+      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
+
+      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
+
+      var costo = document.getElementById("servcosto4").innerHTML;
+
+      var monto = diff * costo;
+
+      document.getElementById("servtotal4").innerHTML =
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
+    } else {
+      document.getElementById("servtotal4").innerHTML = "";
+    }
+  } else {
+    document.getElementById("servtotal4").innerHTML = "";
+  }
+  sumaTotal();
+});
+
 
   $("#agregarFlota").click(function () {
     var tipovehiculo = $("#textTipoVehiculo").val();
@@ -1536,170 +1701,6 @@ function listarPrecios() {
     });
 }
 
-$("#tipopublic1").click(function () {
-  if (document.getElementById("tipopublic1").checked) {
-    if (
-      $("#fechaInicioVigencia").val() != "" ||
-      $("#fechaFinVigencia").val() != ""
-    ) {
-      var primfechainicio = $("#fechaInicioVigencia").val();
-      var varfechainicio = primfechainicio.split("/");
-      var diainicio = varfechainicio[0];
-      var mesinicio = varfechainicio[1];
-      var añoinicio = varfechainicio[2];
-
-      var fechainicio1 = new Date(
-        mesinicio + "/" + diainicio + "/" + añoinicio
-      );
-
-      var primfechafin = $("#fechaFinVigencia").val();
-      var varfechafin = primfechafin.split("/");
-      var diafin = varfechafin[0];
-      var mesfin = varfechafin[1];
-      var añofin = varfechafin[2];
-
-      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
-
-      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
-
-      var costo = document.getElementById("servcosto1").innerHTML;
-
-      var monto = diff * costo;
-
-      document.getElementById("servtotal1").innerHTML =
-        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
-    } else {
-      document.getElementById("servtotal1").innerHTML = "";
-    }
-  } else {
-    document.getElementById("servtotal1").innerHTML = "";
-  }
-  sumaTotal();
-});
-
-$("#tipopublic2").click(function () {
-  if (document.getElementById("tipopublic2").checked) {
-    if (
-      $("#fechaInicioVigencia").val() != "" ||
-      $("#fechaFinVigencia").val() != ""
-    ) {
-      var primfechainicio = $("#fechaInicioVigencia").val();
-      var varfechainicio = primfechainicio.split("/");
-      var diainicio = varfechainicio[0];
-      var mesinicio = varfechainicio[1];
-      var añoinicio = varfechainicio[2];
-
-      var fechainicio1 = new Date(
-        mesinicio + "/" + diainicio + "/" + añoinicio
-      );
-
-      var primfechafin = $("#fechaFinVigencia").val();
-      var varfechafin = primfechafin.split("/");
-      var diafin = varfechafin[0];
-      var mesfin = varfechafin[1];
-      var añofin = varfechafin[2];
-
-      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
-
-      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
-
-      var costo = document.getElementById("servcosto2").innerHTML;
-
-      var monto = diff * costo;
-
-      document.getElementById("servtotal2").innerHTML =
-        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
-    } else {
-      document.getElementById("servtotal2").innerHTML = "";
-    }
-  } else {
-    document.getElementById("servtotal2").innerHTML = "";
-  }
-  sumaTotal();
-});
-
-$("#tipopublic3").click(function () {
-  if (document.getElementById("tipopublic3").checked) {
-    if (
-      $("#fechaInicioVigencia").val() != "" ||
-      $("#fechaFinVigencia").val() != ""
-    ) {
-      var primfechainicio = $("#fechaInicioVigencia").val();
-      var varfechainicio = primfechainicio.split("/");
-      var diainicio = varfechainicio[0];
-      var mesinicio = varfechainicio[1];
-      var añoinicio = varfechainicio[2];
-
-      var fechainicio1 = new Date(
-        mesinicio + "/" + diainicio + "/" + añoinicio
-      );
-
-      var primfechafin = $("#fechaFinVigencia").val();
-      var varfechafin = primfechafin.split("/");
-      var diafin = varfechafin[0];
-      var mesfin = varfechafin[1];
-      var añofin = varfechafin[2];
-
-      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
-
-      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
-
-      var costo = document.getElementById("servcosto3").innerHTML;
-
-      var monto = diff * costo;
-
-      document.getElementById("servtotal3").innerHTML =
-        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
-    } else {
-      document.getElementById("servtotal3").innerHTML = "";
-    }
-  } else {
-    document.getElementById("servtotal3").innerHTML = "";
-  }
-  sumaTotal();
-});
-
-$("#tipopublic4").click(function () {
-  if (document.getElementById("tipopublic4").checked) {
-    if (
-      $("#fechaInicioVigencia").val() != "" ||
-      $("#fechaFinVigencia").val() != ""
-    ) {
-      var primfechainicio = $("#fechaInicioVigencia").val();
-      var varfechainicio = primfechainicio.split("/");
-      var diainicio = varfechainicio[0];
-      var mesinicio = varfechainicio[1];
-      var añoinicio = varfechainicio[2];
-
-      var fechainicio1 = new Date(
-        mesinicio + "/" + diainicio + "/" + añoinicio
-      );
-
-      var primfechafin = $("#fechaFinVigencia").val();
-      var varfechafin = primfechafin.split("/");
-      var diafin = varfechafin[0];
-      var mesfin = varfechafin[1];
-      var añofin = varfechafin[2];
-
-      var fechafin1 = new Date(mesfin + "/" + diafin + "/" + añofin);
-
-      var diff = Math.abs(fechafin1 - fechainicio1) / (1000 * 3600 * 24);
-
-      var costo = document.getElementById("servcosto4").innerHTML;
-
-      var monto = diff * costo;
-
-      document.getElementById("servtotal4").innerHTML =
-        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monto + " S/";
-    } else {
-      document.getElementById("servtotal4").innerHTML = "";
-    }
-  } else {
-    document.getElementById("servtotal4").innerHTML = "";
-  }
-  sumaTotal();
-});
-
 function sumaTotal() {
   var total = 0;
   if (document.getElementById("tipopublic1").checked) {
@@ -1707,28 +1708,28 @@ function sumaTotal() {
     monto = monto.replace("S/", "");
     monto = monto.replace(/\&nbsp;/g, "");
     monto = monto.trim();
-    total = parseFloat(monto) + total;
+    total = parseFloat(monto) + parseFloat(total);
   }
   if (document.getElementById("tipopublic2").checked) {
-    total = parseFloat(document.getElementById("servtotal2").innerHTML) + total;
+    monto = document.getElementById("servtotal2").innerHTML;
     monto = monto.replace("S/", "");
     monto = monto.replace(/\&nbsp;/g, "");
     monto = monto.trim();
-    total = parseFloat(monto) + total;
+    total = parseFloat(monto) + parseFloat(total);
   }
   if (document.getElementById("tipopublic3").checked) {
-    total = parseFloat(document.getElementById("servtotal3").innerHTML) + total;
+    monto = document.getElementById("servtotal3").innerHTML;
     monto = monto.replace("S/", "");
     monto = monto.replace(/\&nbsp;/g, "");
     monto = monto.trim();
-    total = parseFloat(monto) + total;
+    total = parseFloat(monto) + parseFloat(total);
   }
   if (document.getElementById("tipopublic4").checked) {
-    total = parseFloat(document.getElementById("servtotal4").innerHTML) + total;
+    monto = document.getElementById("servtotal4").innerHTML;
     monto = monto.replace("S/", "");
     monto = monto.replace(/\&nbsp;/g, "");
     monto = monto.trim();
-    total = parseFloat(monto) + total;
+    total = parseFloat(monto) + parseFloat(total);
   }
   $("#textmontototal").val(total + " S/");
 
