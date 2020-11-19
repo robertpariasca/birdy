@@ -90,5 +90,30 @@ class PropuestaDetalleProducto extends Conexion{
 
         return false;
     }
+    public function listarDetalladoProducto()
+    {
+        try {
 
+            $sql = "
+                        select 
+                            nro_propuesta_productos,
+                            cod_producto,
+                            nom_producto,
+                            cantidad_producto
+                        from 
+                            propuesta_detalles_productos
+                        where
+                            nro_propuesta=:p_nropropuesta
+                        ;
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_nropropuesta", $this->getNropropuesta());
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 }

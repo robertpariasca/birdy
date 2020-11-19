@@ -14,6 +14,7 @@ class Contacto extends Conexion
     private $coddepartamento;
     private $codprovincia;
     private $coddistrito;
+    private $nropropuesta;
    
     public function getCodcliente()
     {
@@ -70,6 +71,11 @@ class Contacto extends Conexion
         return $this->coddistrito;
     }
  
+    public function getNropropuesta()
+    {
+        return $this->nropropuesta;
+    }
+
     public function setCoddistrito($coddistrito)
     {
         $this->coddistrito = $coddistrito;
@@ -103,6 +109,11 @@ class Contacto extends Conexion
     public function setCorreo($correo)
     {
         $this->correo = $correo;
+    }
+
+    public function setNropropuesta($nropropuesta)
+    {
+        $this->nropropuesta = $nropropuesta;
     }
 
     public function agregar()
@@ -233,6 +244,41 @@ class Contacto extends Conexion
                 ";
 
             $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+
+    public function listarContactoCliente()
+    {
+        try {
+            $sql = "
+                    select
+                        nom_contacto,
+                        cargo_contacto,
+                        direccion,
+                        celular,
+                        correo
+                    from
+                        contacto c
+                    inner join
+                        usuario u
+                    on 
+                        c.cod_cliente=u.cod_cliente
+                    inner join
+                        propuesta_cabecera p
+                    on
+                        c.cod_cliente=p.cod_solicitante
+                    where
+                        p.nro_propuesta=:p_nropropuesta
+                    ;
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_nropropuesta", $this->getNropropuesta());
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultado;

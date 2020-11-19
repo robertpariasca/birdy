@@ -272,5 +272,48 @@ class PropuestaDetalle extends Conexion{
 
         return false;
     }
+    public function listarDetallado()
+    {
+        try {
 
+            $sql = "
+                        select 
+                            nro_detalle_propuesta,
+                            volumen,
+                            dimensiones,
+                            peso,
+                            caracteristicas,
+                            u.departamento as DepartamentoSalida ,
+                            u.provincia as ProvinciaSalida,
+                            u.distrito as DistritoSalida,
+                            direccion_salida,
+                            fecha_salida,
+                            hora_salida,
+                            b.departamento as DepartamentoLlegada,
+                            b.provincia as ProvinciaLlegada,
+                            b.distrito as DistritoLlegada,
+                            direccion_llegada,
+                            fecha_llegada,
+                            hora_llegada,
+                            detalles
+                        from 
+                            propuesta_detalles p
+                            left join
+                        ubigeo u on p.departamento_salida = u.coddepartamento and p.provincia_salida = u.codprovincia and p.distrito_salida = u.coddistrito
+                    left join 
+                    ubigeo b on p.departamento_llegada = b.coddepartamento and p.provincia_llegada = b.codprovincia and p.distrito_llegada = b.coddistrito
+                        where
+                            nro_propuesta=:p_nropropuesta
+                        ;
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_nropropuesta", $this->getNropropuesta());
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 }

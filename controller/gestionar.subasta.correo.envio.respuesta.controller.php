@@ -4,9 +4,10 @@ application/x-httpd-php enviar_correo_automatico.controller.php ( PHP script, UT
   
   require_once '../logic/Contacto.class.php';
   
-  $TipoSubasta  = $_POST["p_tiposubasta"];
-  $CodPropuesta = $_POST["p_codpropuesta"];
-  $Observaciones= $_POST["p_observaciones"];
+  $codTipo  = $_POST["p_codtipo"];
+  $nropropuesta = $_POST["p_nroPropuesta"];
+  $costo= $_POST["p_costo"];
+  $detalles= $_POST["p_detalles"];
 
   $SubastaTexto = "";
 
@@ -14,11 +15,11 @@ application/x-httpd-php enviar_correo_automatico.controller.php ( PHP script, UT
 
   $objContacto = new Contacto();
 
+  $clientes = $objContacto->listarContactoCliente($nropropuesta);
   $proveedores = $objContacto->listarContactoProveedores();
 
-
   //Busqueda Proveedores
-
+/*
   if ($CodPropuesta == "1") {
     $SubastaTexto = "Carga";
   }else if ($CodPropuesta == "2"){
@@ -26,7 +27,7 @@ application/x-httpd-php enviar_correo_automatico.controller.php ( PHP script, UT
   }else{
     $SubastaTexto = "Servicio";
   }
-
+*/
 $body = $mail->Body = 
 '<div style="font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;	background-color: #FFF;	margin: 0;	padding: 0;	color: #000;">
 <div class="container" style="width: 50%; background-color: #FFF; margin: 0 auto;">
@@ -34,12 +35,13 @@ $body = $mail->Body =
 <p>&nbsp;</p><p>&nbsp;</p>
 <h3 id="importante" style="color: #F00;"><br>
 </h3>
-<div><span style="color: #F00; font-weight: bold; font-size: large;"><br />¡Nueva Propuesta!</span></div>
+<div><span style="color: #F00; font-weight: bold; font-size: large;"><br />Una propuesta que subió ha recibido una oferta</span></div>
 <div id="linea" style="display: inline-block;margin-top: 2px;height: 3px;background:#0F8E28;   width: 100%;"></div>
 <div align="justify">
-  <strong>Se ha creado una nueva subasta </strong>
-  <p>Tipo : '.$SubastaTexto.' </p>
-  <p>Observaciones : '.$Observaciones.' </p>
+  <strong>Un proveedor ha respondido a su propuesta </strong>
+  <p>Contacto : '.$proveedores[0]["nom_contacto"].' </p>
+  <p>Costo Ofrecido : '.$costo.' </p>
+  <p>Detalles : '.$detalles.' </p>
   <p>&nbsp;</p>
   <p>Para mas información, ingrese a su cuenta.</p>
 </div>
@@ -88,7 +90,7 @@ $body = $mail->Body =
         //Recipients
         $mail->setFrom('recovery@lachuspita.pe', 'La Chuspita'); // quién lo envía
         
-  foreach ($proveedores as $correo) {
+  foreach ($clientes as $correo) {
     $mail->addAddress($correo['correo']); 
  }
            // quién lo recibe

@@ -7,10 +7,10 @@ class PropuestaPostulantesDetalle extends Conexion
 
     private $idpropuestapostulantesdetalle;
     private $idpostulantepropuesta;
+    private $idchofer;
     private $nomchofer;
-    private $dnichofer;
+    private $idauto;
     private $placaauto;
-    private $tipoauto;
 
     public function getIdpropuestapostulantesdetalle()
     {
@@ -32,6 +32,16 @@ class PropuestaPostulantesDetalle extends Conexion
         $this->idpostulantepropuesta = $idpostulantepropuesta;
     }
 
+    public function getIdchofer()
+    {
+        return $this->idchofer;
+    }
+
+    public function setIdchofer($idchofer)
+    {
+        $this->idchofer = $idchofer;
+    }
+
     public function getNomchofer()
     {
         return $this->nomchofer;
@@ -42,16 +52,16 @@ class PropuestaPostulantesDetalle extends Conexion
         $this->nomchofer = $nomchofer;
     }
 
-    public function getDnichofer()
+    public function getIdauto()
     {
-        return $this->dnichofer;
+        return $this->idauto;
     }
 
-    public function setDnichofer($dnichofer)
+    public function setIdauto($idauto)
     {
-        $this->dnichofer = $dnichofer;
+        $this->idauto = $idauto;
     }
-
+ 
     public function getPlacaauto()
     {
         return $this->placaauto;
@@ -61,14 +71,61 @@ class PropuestaPostulantesDetalle extends Conexion
     {
         $this->placaauto = $placaauto;
     }
-
-    public function getTipoauto()
+    public function agregar()
     {
-        return $this->tipoauto;
+        $this->dblink->beginTransaction();
+
+        try {
+
+                    $sql = "select fn_registrarPropuestaPostulanteChoferVehiculo(                    
+                                    :p_idpostulantepropuesta,
+                                    :p_idconductor, 
+                                    :p_nomchofer,
+                                    :p_idauto,
+                                    :p_placaauto
+                                 );";
+                    $sentencia = $this->dblink->prepare($sql);
+                    $sentencia->bindParam(":p_idpostulantepropuesta", $this->getIdpostulantepropuesta());
+                    $sentencia->bindParam(":p_idconductor", $this->getIdchofer());
+                    $sentencia->bindParam(":p_nomchofer", $this->getNomchofer());
+                    $sentencia->bindParam(":p_idauto", $this->getIdauto());
+                    $sentencia->bindParam(":p_placaauto", $this->getPlacaauto());
+                    $sentencia->execute();
+                    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                    $this->dblink->commit();
+                    return $resultado;
+  
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+
+        return false;
     }
-
-    public function setTipoauto($tipoauto)
+    public function listar()
     {
-        $this->tipoauto = $tipoauto;
+        try {
+
+            $sql = "
+                        select 
+                            id_conductor,
+                            nom_chofer,
+                            id_auto,
+                            placa_auto
+                        from 
+                            propuesta_postulantes_detalles
+                        where
+                            id_postulante_propuesta = :p_idpostulantepropuesta;
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_idpostulantepropuesta", $this->getIdpostulantepropuesta());
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
     }
 }

@@ -49,7 +49,7 @@ $_POST["s_usuario"] = $dniSesion;
                         <div class="card-body">
                           <h5 class="card-title">Subastas</h5>
                           <div class="table-responsive">
-                            <table id="propromo" class="mb-0 table">
+                            <table id="tbsubasta" class="mb-0 table">
                               <thead>
                                 <tr>
                                   <th>#</th>
@@ -58,7 +58,6 @@ $_POST["s_usuario"] = $dniSesion;
                                   <th>Fecha Creación</th>
                                   <th>Fecha Cierre</th>
                                   <th>Observaciones</th>
-                                  <th>Estado</th>
                                   <th>Opciones</th>
                                 </tr>
                               </thead>

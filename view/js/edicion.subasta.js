@@ -169,9 +169,11 @@ function listar() {
             resultado.datos[i].observaciones +
             "</td>" +
             '<td><div class="widget-content-right widget-content-actions">' +
-            '<button type="button" name="delete" class="border-0 btn-transition btn btn-outline-danger delete"><i class="fa fa-trash-alt"></i></button></div></td></tr>';
+            '<button type="button" name="checksubasta" onclick="Acceder('+ resultado.datos[i].nro_propuesta +');" class="border-0 btn-transition btn btn-outline-success checksubasta"><i class="fa fa-check"></i></button>' +
+            '<button type="button" name="deletesubasta" class="border-0 btn-transition btn btn-outline-danger deletesubasta"><i class="fa fa-trash-alt"></i></button>' +
+            '</div></td></tr>';
 
-          $("#propromo tbody").append(adicion);
+          $("#tbsubasta tbody").append(adicion);
         }
       } else {
         //swal("Mensaje del sistema", resultado , "warning");
@@ -182,6 +184,38 @@ function listar() {
       //swal("Error", datosJSON.mensaje , "error");
     });
 }
+
+function Acceder (elt) {
+      $.post('../controller/gestionarSubasta.listar.postulantes.controller.php', 
+      { 
+        p_nropropuesta: elt
+      }).done(function (resultado) {
+
+                  location.href = "../view/subasta.listar.propuestas.view.php";
+
+
+
+       });
+
+  }
+
+/*
+$(document).on("click", ".checksubasta", function () {
+  var codpropuesta = $(this).closest("tr").find("td:eq(0)").text();
+  $.post(
+    "subasta.listar.propuestas.view.php",
+    {
+      p_codpropuesta: codpropuesta,
+    }
+  )
+    .done(function (resultado) {
+      window.open("subasta.listar.propuestas.view.php")
+    })
+    .fail(function (error) {
+    });
+
+});
+*/
 
 function cargarRutasSalida() {
   $.post("../controller/gestionarCliente.listar.departamento.controller.php")
