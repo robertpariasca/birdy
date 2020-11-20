@@ -134,7 +134,7 @@ function aceptarPropuesta(nropropuesta) {
                     } else {
                         swal("Mensaje del sistema", resultado, "warning");
                     }
-
+                    $('#ModalVer').modal('hide');
                 }).fail(function (error) {
                     var datosJSON = $.parseJSON(error.responseText);
                     swal("Error", datosJSON.mensaje, "error");

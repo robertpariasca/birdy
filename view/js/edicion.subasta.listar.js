@@ -86,14 +86,16 @@ $(document).ready(function () {
           chofer +
           "</td>" +
           '<td><div class="widget-content-right widget-content-actions">' +
-          '<button type="button" name="deletevehiculos" class="border-0 btn-transition btn btn-outline-danger deleteproductosSubas"><i class="fa fa-trash-alt"></i></button></div></td></tr>';
+          '<button type="button" name="deletevehiculos" class="border-0 btn-transition btn btn-outline-danger deletevehiculos"><i class="fa fa-trash-alt"></i></button></div></td></tr>';
 
         if ($(this).hasClass("datostransporte")) {
           $("tbody", this).append(adicion);
         }
       });
   });
-
+  $(document).on("click", ".deletevehiculos", function () {
+    $(this).closest("tr").remove();
+  });
   $(".envioPropuestaRutas").click(function (e) {
     e.preventDefault();
     var arcodvehiculo = new Array();
@@ -101,6 +103,21 @@ $(document).ready(function () {
     var arcodchofer = new Array();
     var archofer = new Array();
     var sum = 0;
+
+    var nomModal = $(this)
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .attr('id');
+
+    
     $(this)
       .parent()
       .siblings()
@@ -113,9 +130,11 @@ $(document).ready(function () {
         }
         if ($(this).hasClass("txtcosto")) {
           costo = $(this).children().val();
+          $(this).children().val("");
         }
         if ($(this).hasClass("txtdetalles")) {
           detalles = $(this).children().val();
+          $(this).children().val("");
         }
         if ($(this).hasClass("datostransporte")) {
 
@@ -172,15 +191,16 @@ $(document).ready(function () {
                 var datosJSON = $.parseJSON(error.responseText);
               });
           }
-                  //alert(codpromocion);
-               
-
 
           codpropuesta = resultado.datos[0].codpropuesta;
 
           EnvioCorreo(codTipo, nroPropuesta, costo, detalles);
 
           swal("Propuesta Aceptada", datosJSON.mensaje, "success");
+
+          $('#'+ nomModal).modal('hide');
+          
+
         } else {
         }
       })

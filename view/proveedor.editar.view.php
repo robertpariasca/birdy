@@ -16,6 +16,12 @@ $_POST["s_usuario"] = $dniSesion;
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <?php include_once 'estilos.view.php'; ?>
+  <style>
+    body{
+   font-family: Verdana, sans-serif;
+   font-size: 18px
+}
+  </style>
 </head>
 
 <body class="hold-transition skin-purple-light sidebar-mini">

@@ -16,6 +16,12 @@ $_POST["s_usuario"] = $dniSesion;
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <?php include_once 'estilos.view.php'; ?>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      font-size: 18px
+    }
+  </style>
 </head>
 
 <body class="hold-transition skin-purple-light sidebar-mini">
@@ -175,7 +181,7 @@ $_POST["s_usuario"] = $dniSesion;
                         <div class="row justify-content-center">
                           <!-- /.col -->
                           <div class="col-6">
-                              <button class="mt-1 btn btn-primary" type="button" name="agregarContacto" id="agregarContacto">Cargar</button>
+                            <button class="mt-1 btn btn-primary" type="button" name="agregarContacto" id="agregarContacto">Cargar</button>
                           </div>
                           <!-- /.col -->
                         </div>

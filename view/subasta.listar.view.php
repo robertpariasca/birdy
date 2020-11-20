@@ -21,6 +21,10 @@ $_POST["s_usuario"] = $dniSesion;
       table-layout: fixed;
       width: 100%;
     }
+    body{
+   font-family: Verdana, sans-serif;
+   font-size: 18px
+}
   </style>
 </head>
 
@@ -270,10 +274,10 @@ $_POST["s_usuario"] = $dniSesion;
                                         ?>
                                           <div><b>Ingreso Datos</b></div>
                                           <div class="input-group mb-3 txtcodtipo">
-                                          <input style='margin-bottom:16px' name="txtcodtipo" id="txtcodtipo" class="form-control txtcodtipo" value="<?php echo $resultado[$i]["cod_tipo"] ?>">
+                                          <input style='margin-bottom:16px' type="hidden"  name="txtcodtipo" id="txtcodtipo" class="form-control txtcodtipo" value="<?php echo $resultado[$i]["cod_tipo"] ?>">
                                           </div>
                                           <div class="input-group mb-3 txtnropropuesta">
-                                          <input style='margin-bottom:16px' name="txtnropropuesta" id="txtnropropuesta" class="form-control txtnropropuesta" value="<?php echo $resultadoSubasta[$k]["nro_propuesta"] ?>">
+                                          <input style='margin-bottom:16px' type="hidden"  name="txtnropropuesta" id="txtnropropuesta" class="form-control txtnropropuesta" value="<?php echo $resultadoSubasta[$k]["nro_propuesta"] ?>">
                                           </div>
                                           <div class="input-group mb-3 txtcosto">
                                           <input style='margin-bottom:16px' type="text" name="txtcosto" id="txtcosto" class="form-control txtcosto" placeholder="Costo" onkeypress="ValidaSoloNumerosYPunto();">

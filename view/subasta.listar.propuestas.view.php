@@ -17,6 +17,11 @@ $_POST["s_usuario"] = $dniSesion;
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <?php include_once 'estilos.view.php'; ?>
   <style>
+    body{
+   font-family: Verdana, sans-serif;
+   font-size: 18px
+}
+
     table {
       table-layout: fixed;
       width: 100%;
@@ -61,10 +66,10 @@ $_POST["s_usuario"] = $dniSesion;
                 <div class="box box-primary">
                   <div class="box-header with-border">
                     <h3 class="box-title">Propuesta N°: <?php echo  $_SESSION["nro_propuesta"] ?> </h3>
-                    
+
                   </div>
 
-                  <table id= "tblista" name= "tblista" class="table table-borderless">
+                  <table id="tblista" name="tblista" class="table table-borderless">
                     <thead>
                       <tr>
                         <th>#</th>
