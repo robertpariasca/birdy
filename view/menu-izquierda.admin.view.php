@@ -82,6 +82,19 @@
             echo '<li class="nav-item"><a href="subasta.editar.view.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Crear Subasta</p></a></li>';
             echo '</ul>';
             echo '</li>';
+
+            echo '<li class="nav-item has-treeview">';
+            echo '<a href="#" class="nav-link">';
+            echo '<ion-icon name="desktop-outline"></ion-icon>';
+            echo '<p>';
+            echo '<span class="text-info text-bold">Contrato</span>';
+            echo '<i class="fas fa-angle-left right"></i>';
+            echo '</p>';
+            echo '</a>';
+            echo '<ul class="nav nav-treeview">';
+            echo '<li class="nav-item"><a href="contrato.cliente.view.php" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Ver Contratos</p></a></li>';
+            echo '</ul>';
+            echo '</li>';
           }else if ($s_idrol=="2"){
             echo '<li class="nav-item has-treeview">';
             echo '<a href="#" class="nav-link">';

@@ -11,6 +11,7 @@ class Propuesta extends Conexion
     private $fechacreacion;
     private $fechacierre;
     private $observaciones;
+    private $codpostulante;
     private $estado;
 
     public function getNropropuesta()
@@ -83,6 +84,16 @@ class Propuesta extends Conexion
         $this->estado = $estado;
     }
 
+    public function getCodpostulante()
+    {
+        return $this->codpostulante;
+    }
+
+    public function setCodpostulante($codpostulante)
+    {
+        $this->codpostulante = $codpostulante;
+    }
+
     public function listar()
     {
         try {
@@ -105,7 +116,8 @@ class Propuesta extends Conexion
                         from 
                             propuesta_cabecera
                         where
-                            cod_solicitante = :p_codsolicitante;
+                            cod_solicitante = :p_codsolicitante
+                        and nro_propuesta NOT IN (select id_propuesta from contrato_cabecera);
                 ";
 
             $sentencia = $this->dblink->prepare($sql);
@@ -167,11 +179,14 @@ class Propuesta extends Conexion
                             tipo_subasta=:p_tiposubasta
                         and
                             estado = '1'
+                        and
+                            nro_propuesta NOT IN (select nro_propuesta from propuesta_postulantes where cod_postulante = :p_codpostulante group by nro_propuesta)
                         ;
                 ";
 
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->bindParam(":p_tiposubasta", $this->getTiposubasta());
+            $sentencia->bindParam(":p_codpostulante", $this->getCodpostulante());
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultado;
@@ -179,4 +194,5 @@ class Propuesta extends Conexion
             throw $exc;
         }
     }
+
 }

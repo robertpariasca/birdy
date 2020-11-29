@@ -21,11 +21,11 @@ try {
     $CostoCobrado = $resultado[0]["costo_cobrado"];
 
     $objPropuestaContrato->setIdpropuesta($NroPropuesta);
-    $objPropuestaContrato->setCodsolicitante($volumen);
-    $objPropuestaContrato->setCodproveedor($dimension);
-    $objPropuestaContrato->setFechacontrato($peso);
+    $objPropuestaContrato->setCodsolicitante($CodSolicitante);
+    $objPropuestaContrato->setCodproveedor($CodPostulante);
+    $objPropuestaContrato->setFechacontrato($FechaContrato);
     $objPropuestaContrato->setCosto($CostoCobrado);
-    $
+    $objPropuestaContrato->setComision("0.00");
     $resultado2 = $objPropuestaContrato->agregar();
 
     Helper::imprimeJSON(200, "Agregado correctamente", $resultado);
