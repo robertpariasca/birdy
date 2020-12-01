@@ -36,7 +36,9 @@
 <!--sweetalert-->
 <script src="../util/plugins/swa/sweetalert-dev.js"></script>
 <script src="../util/plugins/datatables/jquery.dataTables.js"></script>
+<!-- Maps -->
 
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 
 <!-- InputMask -->
 <script src="../util/plugins/moment/moment.min.js"></script>

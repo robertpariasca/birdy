@@ -8,8 +8,7 @@ try {
     $codigotipo            = $_POST["codigo_tipo"];
 
     $objProducto = new Propuesta();
-    session_name("Birdy");
-    session_start();
+
     $nropropuesta= $_SESSION["cod_acceso"];
     $objProducto->setCodpostulante($nropropuesta);
     $objProducto->setTiposubasta($codigotipo);

@@ -70,6 +70,35 @@ $_POST["s_usuario"] = $dniSesion;
                               </tbody>
                             </table>
                           </div>
+                          <div class="modal fade" id="ModalVer" tabindex="-1" role="dialog" aria-labelledby="ModalVer" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Mapa Actual</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="row">
+                                  <div id="ruta">
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                         </div>
                       </div>
                     </div>
