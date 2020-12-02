@@ -21,10 +21,17 @@ $_POST["s_usuario"] = $dniSesion;
       font-family: Verdana, sans-serif;
       font-size: 18px
     }
+    #ruta {
+      width: 100%;
+      height: 300px;
+      background: #f2f2f2;
+    }
   </style>
 </head>
 
 <body class="hold-transition skin-purple-light sidebar-mini">
+
+
   <!-- Site wrapper -->
   <div class="wrapper">
 
@@ -40,6 +47,7 @@ $_POST["s_usuario"] = $dniSesion;
       <div class="row justify-content-center">
         <div class="col-md-9">
           <div class="row justify-content-center">
+          <div id="ruta"></div>
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
@@ -70,6 +78,8 @@ $_POST["s_usuario"] = $dniSesion;
                               </tbody>
                             </table>
                           </div>
+
+                          <!--
                           <div class="modal fade" id="ModalVer" tabindex="-1" role="dialog" aria-labelledby="ModalVer" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -84,9 +94,7 @@ $_POST["s_usuario"] = $dniSesion;
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="row">
-                                  <div id="ruta">
-                                    
-                                  </div>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -99,6 +107,7 @@ $_POST["s_usuario"] = $dniSesion;
                       </div>
                     </div>
                   </div>
+  -->
                         </div>
                       </div>
                     </div>
@@ -106,13 +115,13 @@ $_POST["s_usuario"] = $dniSesion;
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
+ 
   <!--<?php include_once 'pie.view.php'; ?>-->
 
   <!-- Control Sidebar -->
