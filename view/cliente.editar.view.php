@@ -138,6 +138,14 @@ $_POST["s_usuario"] = $dniSesion;
                         <h3 class="box-title">Editar datos de contacto - Cliente</h3>
                       </div>
                       <form id="frmActualizarUsuarioCliContacto">
+                      <div class="input-group mb-3">
+                          <input type="text" name="textDocumentoContacto" id="textDocumentoContacto" class="form-control" placeholder="Documento Contacto" onkeypress="ValidaSoloNumeros();">
+                          <div class="input-group-append">
+                            <div class="input-group-text">
+                              <span class="fas fa-user"></span>
+                            </div>
+                          </div>
+                        </div>
                         <div class="input-group mb-3">
                           <input type="text" name="textNombreCompletoCliContacto" id="textNombreCompletoCliContacto" class="form-control" placeholder="Nombre Contacto">
                           <div class="input-group-append">

@@ -45,7 +45,7 @@ try {
    
    <table class="tabla_cabecera" width="100%" cellpadding="0" cellspacing="0" border="0">
      <tr >
-       <td style="text-align: center; vertical-align: middle;">CONTRATO POR'.$datoscontrato[0]["nombre_tipo"].'</td>
+       <td style="text-align: center; vertical-align: middle;">CONTRATO POR'.strtoupper($datoscontrato[0]["nombre_tipo"]).'</td>
      </tr>
      
    </table>

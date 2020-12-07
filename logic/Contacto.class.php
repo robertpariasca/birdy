@@ -6,6 +6,7 @@ class Contacto extends Conexion
 {
 
     private $codcliente;
+    private $documento;
     private $nomcontacto;
     private $cargocontacto;
     private $direccion;
@@ -15,7 +16,17 @@ class Contacto extends Conexion
     private $codprovincia;
     private $coddistrito;
     private $nropropuesta;
-   
+ 
+    public function getDocumento()
+    {
+        return $this->documento;
+    }
+
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
+    }
+
     public function getCodcliente()
     {
         return $this->codcliente;
@@ -122,8 +133,9 @@ class Contacto extends Conexion
 
         try {
 
-                    $sql = "select fn_registrarContacto(                    
+                    $sql = "select fn_registrarContacto(              
                                     :p_codcliente,
+                                    :p_documento,     
                                     :p_nomcontacto, 
                                     :p_cargocontacto,
                                     :p_direccion,
@@ -136,6 +148,7 @@ class Contacto extends Conexion
                     $sentencia = $this->dblink->prepare($sql);
                     // $sentencia->bindParam(":p_codigoCandidato", $this->getCodigoCandidato());
                     $sentencia->bindParam(":p_codcliente", $this->getCodcliente());
+                    $sentencia->bindParam(":p_documento", $this->getDocumento());
                     $sentencia->bindParam(":p_nomcontacto", $this->getNomcontacto());
                     $sentencia->bindParam(":p_cargocontacto", $this->getCargocontacto());
                     $sentencia->bindParam(":p_direccion", $this->getDireccion());
@@ -164,15 +177,21 @@ class Contacto extends Conexion
         try {
             $sql = "
                     select
-                        nom_contacto,
-                        cargo_contacto,
-                        direccion,
-                        celular,
-                        correo
+                        c.nom_contacto,
+                        c.cargo_contacto,
+                        c.direccion,
+                        c.celular,
+                        c.correo,
+                        u.doc_cliente,
+                        u.nom_cliente
                     from
-                        contacto
+                        contacto c
+                    right join
+                        usuario u
+                    on
+                        c.cod_cliente = u.cod_cliente
                     where
-                        cod_cliente=:p_codcliente;
+                        c.cod_cliente=:p_codcliente;
                 ";
 
             $sentencia = $this->dblink->prepare($sql);

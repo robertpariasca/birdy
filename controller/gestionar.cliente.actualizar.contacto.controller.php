@@ -5,6 +5,7 @@
     require_once '../logic/Contacto.class.php';
     require_once '../util/functions/Helper.class.php';
 
+    $documento          = $_POST["p_documento"];
     $nombre             = $_POST["p_nombre"];
     $cargo              = $_POST["p_cargo"];
     $direccion          = $_POST["p_direccion"];
@@ -18,6 +19,7 @@
     session_name("Birdy");
     session_start();
         $objUsuario->setCodcliente($_SESSION["cod_acceso"]);
+        $objUsuario->setDocumento($documento);
         $objUsuario->setNomcontacto($nombre);
         $objUsuario->setCargocontacto($cargo);
         $objUsuario->setDireccion($direccion);

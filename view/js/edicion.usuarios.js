@@ -4,6 +4,7 @@ $(document).ready(function () {
   cargarRutasUsu();
 
   $("#agregarContacto").click(function () {
+    var documento = $("#textDocumentoContacto").val();
     var nombre = $("#textNombreCompletoCliContacto").val();
     var cargo = $("#textCargoCliContacto").val();
     var direccion = $("#textDireccionCliContacto").val();
@@ -15,6 +16,7 @@ $(document).ready(function () {
 
     // Checking for blank fields.
     if (
+      documento == "" ||
       nombre == "" ||
       cargo == "" ||
       direccion == "" ||
@@ -29,6 +31,7 @@ $(document).ready(function () {
       $.post(
         "../controller/gestionar.cliente.actualizar.contacto.controller.php",
         {
+          p_documento: documento,
           p_nombre: nombre,
           p_cargo: cargo,
           p_direccion: direccion,
@@ -56,6 +59,7 @@ $(document).ready(function () {
             $("#clicontacto tbody>tr").empty();
             cargarcontactos();
 
+            $("#textDocumentoContacto").val("");
             $("#textNombreCompletoCliContacto").val("");
             $("#textCargoCliContacto").val("");
             $("#textDireccionCliContacto").val("");
