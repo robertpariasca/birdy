@@ -120,4 +120,44 @@ class ContratoCabecera extends Conexion
         }
         return false;
     }
+
+    public function listarContrato()
+    {
+        $this->dblink->beginTransaction();
+        try {
+            $sql = "select 
+            c.id_contrato,
+            c.id_propuesta,
+            c.cod_solicitante,
+            c.cod_proveedor,
+            c.Fecha_contrato,
+            c.Costo,
+            c.Comision,
+            c.Estado,
+            s.nombre_tipo
+        from 
+            contrato_cabecera c
+        inner join
+            propuesta_cabecera p
+        on
+            c.id_propuesta = p.nro_propuesta
+        inner join
+            tipo_servicio s
+        on
+            p.tipo_subasta = s.cod_tipo
+        where
+            id_contrato=:p_idcontrato
+        ;";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_idcontrato", $this->getIdcontrato());
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            $this->dblink->commit();
+            return $resultado;
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+        return false;
+    }
 }

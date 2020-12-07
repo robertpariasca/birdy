@@ -128,6 +128,28 @@ function aceptarPropuesta(nropropuesta) {
                     var datosJSON = resultado;
 
                     if (datosJSON.estado === 200) {
+//Creacion Contrato
+
+                    codcontrato = resultado.datos[0].codcontrato;
+
+                    $.post(
+                      "../controller/gestionar.subasta.contrato.crear.controller.php",
+                      {
+                         
+                        p_codcontrato:  codcontrato,
+                      }
+              ).done(function (resultado) {
+                  var datosJSON = resultado;
+
+                  if (datosJSON.estado === 200) {
+
+                  }
+              }).fail(function (error) {
+                  var datosJSON = $.parseJSON(error.responseText);
+                  swal("Error", datosJSON.mensaje, "error");
+              });
+
+//Creacion Contrato
                         swal("Exito", datosJSON.mensaje, "success");
                         $("#btncerrar").click(); //Cerrar la ventana 
                     } else {

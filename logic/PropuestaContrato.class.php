@@ -148,7 +148,7 @@ class PropuestaContrato extends Conexion
                                     :p_fechacontrato,
                                     :p_costo,
                                     :p_comision
-                                );";
+                                ) as codcontrato;";
                     $sentencia = $this->dblink->prepare($sql);
                     // $sentencia->bindParam(":p_codigoCandidato", $this->getCodigoCandidato());
                     $sentencia->bindParam(":p_idpropuesta", $this->getIdpropuesta());

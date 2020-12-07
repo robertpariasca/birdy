@@ -28,7 +28,7 @@ try {
     $objPropuestaContrato->setComision("0.00");
     $resultado2 = $objPropuestaContrato->agregar();
 
-    Helper::imprimeJSON(200, "Agregado correctamente", $resultado);
+    Helper::imprimeJSON(200, "Agregado correctamente", $resultado2);
 
     /*
     if ($resultado == "EXITO") {
