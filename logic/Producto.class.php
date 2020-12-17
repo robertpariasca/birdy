@@ -49,6 +49,31 @@ class Producto extends Conexion{
         $this->codproveedor = $codproveedor;
     }
 
+    public function listarTodo()
+    {
+        try {
+            $sql = "
+                    select
+                        p.cod_producto,
+                        nom_producto,
+                        nombre_tipo
+                    from
+                        producto p
+                    inner join
+                        tipo_producto t
+                    on 
+                        p.tipo_producto=t.cod_tipo
+                ";
+
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+
     public function listar()
     {
         try {

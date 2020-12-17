@@ -21,6 +21,7 @@ $_POST["s_usuario"] = $dniSesion;
       font-family: Verdana, sans-serif;
       font-size: 18px
     }
+
     #ruta {
       width: 100%;
       height: 300px;
@@ -47,7 +48,7 @@ $_POST["s_usuario"] = $dniSesion;
       <div class="row justify-content-center">
         <div class="col-md-9">
           <div class="row justify-content-center">
-          <div id="ruta"></div>
+            <div id="ruta"></div>
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
@@ -79,35 +80,43 @@ $_POST["s_usuario"] = $dniSesion;
                             </table>
                           </div>
 
-                          <!--
                           <div class="modal fade" id="ModalVer" tabindex="-1" role="dialog" aria-labelledby="ModalVer" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Mapa Actual</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="container-fluid">
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <div class="row">
-                                  
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Calificación</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="container-fluid">
+                                    <div class="row justify-content-center">
+                                      <div class="col-sm-12 justify-content-center">
+                                        <div class="row col-sm-12">
+                                        <div class="row col-sm-12">Por favor, califique su experiencia</div>
+                                          <div id="rateit1" class="row col-sm-8 justify-content-center">
+                                          </div>
+                                          <div class="row col-sm-12">Deja un comentario del servicio</div>
+                                          <div id="coment" class="row col-sm-8 ">
+                                          <input type="text" id="valorcomentario" name="valorcomentario">
+                                          </div>
+                                          <div id="calif" class="row col-sm-8 ">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-info registrarcoment"><ion-icon name="star"></ion-icon>  Calificar</button>
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
 
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-  -->
+
                         </div>
                       </div>
                     </div>
@@ -121,7 +130,7 @@ $_POST["s_usuario"] = $dniSesion;
       </div>
     </div>
   </div>
- 
+
   <!--<?php include_once 'pie.view.php'; ?>-->
 
   <!-- Control Sidebar -->

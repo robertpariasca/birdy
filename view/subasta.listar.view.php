@@ -209,7 +209,7 @@ $_POST["s_usuario"] = $dniSesion;
 
                                               foreach ($resultadoSubastaDetalleProducto as $valor) {
                                               ?>
-                                                <div>Producto: <?php echo  $valor["nom_producto"] ?> -- Cantidad: <?php echo  $valor["cantidad_producto"] ?> </div>
+                                                <div>Producto: <?php echo  $valor["nom_producto"] ?></div><div>Cantidad: <?php echo  $valor["cantidad_producto"] ?> </div>
                                               <?php
                                               }
                                               ?>

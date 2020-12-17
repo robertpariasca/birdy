@@ -4,6 +4,12 @@ $(document).ready(function () {
   cargarRutasLlegada();
   cargarProductosEdi();
 
+    $("#dtCarga").hide();
+    $("#dtDireccionSalida").hide();
+    $("#dtProducto").hide();
+    $("#dtDetProducto").hide();
+
+
   $("#agregarProductoSubasta").click(function () {
     var nombreproducto = $("#cboproductossubasta option:selected").html();
     var codproducto = $("#cboproductossubasta option:selected").val();
@@ -113,6 +119,8 @@ $(document).ready(function () {
 
           swal("Propuesta Registrada", datosJSON.mensaje, "success");
 
+          location.reload();
+
         } else {
         }
       })
@@ -122,6 +130,8 @@ $(document).ready(function () {
 
   });
 });
+
+
 
 function EnvioCorreo(tiposubasta,codpropuesta,observaciones){
   $.post(

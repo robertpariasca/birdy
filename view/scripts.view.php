@@ -40,6 +40,10 @@
 
 <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 
+<!-- Rating -->
+<script src="../util/plugins/rating/js/jquery.rating.pack.js"></script>
+<script src="../util/plugins/starrating/scripts/jquery.rateit.js"></script>
+
 <!-- InputMask -->
 <script src="../util/plugins/moment/moment.min.js"></script>
 <script src="../util/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>

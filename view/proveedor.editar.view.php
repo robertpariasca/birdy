@@ -244,7 +244,6 @@ $_POST["s_usuario"] = $dniSesion;
                         </div>
                         <div class="input-group mb-3">
                           <select name="select" id="cbogps" class="form-control">
-                            <option value="000"> GPS </option>
                             <option value="SI"> Cuenta con GPS </option>
                             <option value="NO"> No cuenta con GPS </option>
                           </select>
@@ -300,7 +299,7 @@ $_POST["s_usuario"] = $dniSesion;
                       </div>
                       <form id="frmActualizarUsuarioProFlota" enctype="multipart/form-data">
                         <div class="input-group mb-3">
-                          <input type="text" name="textNroDocConductor" id="textNroDocConductor" class="form-control" placeholder="Numero Documento Conductor" onkeypress="ValidaSoloNumerosYPunto();">
+                          <input type="text" name="textNroDocConductor" id="textNroDocConductor" class="form-control" maxlength="8" placeholder="Numero Documento Conductor" onkeypress="ValidaSoloNumerosYPunto();">
                           <div class="input-group-append">
                             <div class="input-group-text">
                               <span class="fas fa-user"></span>

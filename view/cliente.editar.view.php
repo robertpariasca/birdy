@@ -186,6 +186,21 @@ $_POST["s_usuario"] = $dniSesion;
                             </div>
                           </div>
                         </div>
+                        <div class="input-group mb-3">
+                            <select name="select" id="cbodepartamentousu" class="form-control">
+                              <option value="000">Departamento</option>
+                            </select>
+                          </div>
+                          <div class="input-group mb-3">
+                            <select name="select" id="cboprovinciausu" class="form-control">
+                              <option value="000">Provincia</option>
+                            </select>
+                          </div>
+                          <div class="input-group mb-3">
+                            <select name="select" id="cbodistritousu" class="form-control">
+                              <option value="000">Distrito</option>
+                            </select>
+                          </div>
                         <div class="row justify-content-center">
                           <!-- /.col -->
                           <div class="col-6">

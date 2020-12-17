@@ -241,7 +241,7 @@ $("#tipopublic4").click(function () {
             listarflotas();
 
             $("#textTipoVehiculo").val("");
-            $("#textcapacidadKg").val("");
+            $("#textcapacidadKg").val("0");
             $("#textPlaca").val("");
             $("#fotoUsuario").val(null);
           } else {
@@ -416,7 +416,7 @@ $("#tipopublic4").click(function () {
     }
   });
 
-  $("#agregarProducto").click(function () {
+  $("#agregarSuscripcion").click(function () {
     var codplanes = $("#cboplanesprod option:selected").val();
     var nomplanes = $("#cboplanesprod option:selected").html();
 
@@ -446,8 +446,8 @@ $("#tipopublic4").click(function () {
         });
     }
   });
-
-  $("#agregarSuscripcion").click(function () {
+  
+  $("#agregarProducto").click(function () {
     var nombreproducto = $("#textNombreProducto").val();
     var tipoproducto = $("#cbotipprod option:selected").val();
 

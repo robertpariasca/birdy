@@ -186,7 +186,7 @@ $_POST["s_usuario"] = $dniSesion;
                             </div>
                           </div>
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="horasalida" data-inputmask-alias="datetime" data-inputmask-inputformat="hh:ss:ss" data-mask="" im-insert="false" placeholder="Hora Salida">
+                            <input type="text" class="form-control" id="horasalida" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:ss:ss" data-mask="" im-insert="false" placeholder="Hora Salida">
                             <div class="input-group-append">
                               <div class="input-group-text">
                                 <span class="far fa-calendar-alt"></span>
@@ -232,7 +232,7 @@ $_POST["s_usuario"] = $dniSesion;
                             </div>
                           </div>
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="horallegada" data-inputmask-alias="datetime" data-inputmask-inputformat="hh:ss:ss" data-mask="" im-insert="false" placeholder="Hora Llegada">
+                            <input type="text" class="form-control" id="horallegada" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:ss:ss" data-mask="" im-insert="false" placeholder="Hora Llegada">
                             <div class="input-group-append">
                               <div class="input-group-text">
                                 <span class="far fa-calendar-alt"></span>

@@ -12,6 +12,8 @@ class ContratoCabecera extends Conexion
     private $fechacontrato;
     private $costo;
     private $comision;
+    private $calificacion;
+    private $comentario;
     private $estado;
 
     public function getIdcontrato()
@@ -94,6 +96,26 @@ class ContratoCabecera extends Conexion
         $this->estado = $estado;
     }
 
+    public function getCalificacion()
+    {
+        return $this->calificacion;
+    }
+
+    public function setCalificacion($calificacion)
+    {
+        $this->calificacion = $calificacion;
+    }
+
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+    }
+
     public function listar()
     {
         $this->dblink->beginTransaction();
@@ -108,7 +130,9 @@ class ContratoCabecera extends Conexion
             Comision,
             Estado
         from 
-            contrato_cabecera;";
+            contrato_cabecera
+        where
+            Estado = '1';";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -160,4 +184,35 @@ class ContratoCabecera extends Conexion
         }
         return false;
     }
+
+    public function actualizar()
+    {
+        $this->dblink->beginTransaction();
+
+        try {
+
+                    $sql = "select fn_actualizarContrato(                    
+                                    :p_calificacion,
+                                    :p_comentario, 
+                                    :p_idcontrato
+                                 );";
+                    $sentencia = $this->dblink->prepare($sql);
+                    // $sentencia->bindParam(":p_codigoCandidato", $this->getCodigoCandidato());
+                    $sentencia->bindParam(":p_calificacion", $this->getCalificacion());
+                    $sentencia->bindParam(":p_comentario", $this->getComentario());
+                    $sentencia->bindParam(":p_idcontrato", $this->getIdcontrato());
+                    $sentencia->execute();
+                    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                    $this->dblink->commit();
+                    return $resultado;
+  
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+
+        return false;
+    }
+
 }

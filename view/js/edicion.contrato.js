@@ -1,10 +1,82 @@
 $(document).ready(function () {
   listar();
+
+  $('#rateit1').rateit({ 
+
+    // min value
+    min: 0, 
+  
+    // max value
+    max: 5, 
+  
+    // step size
+    step: 1, 
+  
+    // 'bg', 'font'
+    mode: 'bg', 
+  
+    // custom icon
+    icon: '★', 
+  
+    // size of star
+    starwidth: 16, 
+    starheight: 16, 
+  
+    // is readonly?
+    readonly: false, 
+  
+    // is resetable?
+    resetable: false, 
+  
+    // is preset?
+    ispreset: false
+    
+   });
+
 /*  
 $('#ModalVer').on('shown.bs.modal', function(){ 
   autoupdate(); 
   }); 
   */
+
+ $(".registrarcoment").click(function (e) {
+  e.preventDefault();
+
+
+  var comentario = $('#valorcomentario').val();
+  var calificacion = $('#rateit1').rateit('value')
+  var contrato = document.getElementById("CodContrato").innerHTML;
+
+
+  $.post(
+    "../controller/gestionarSubasta.actualizar.contrato.calificacion.controller.php",
+    {
+      p_contrato: contrato,
+      p_calificacion: calificacion,
+      p_comentario: comentario,
+    }
+  )
+    .done(function (resultado) {
+      var datosJSON = resultado;
+      if (datosJSON.estado === 200) {
+        //codpropuesta = resultado.datos[0].codpropuesta;
+
+        swal("Se ha enviado su calificación", datosJSON.mensaje, "success");
+
+        $('#ModalVer').modal('hide');
+        location.reload();
+      } else {
+      }
+    })
+    .fail(function (error) {
+      var datosJSON = $.parseJSON(error.responseText);
+    });
+
+
+});
+
+
+
 });
 var idcontrato;
 function listar() {
@@ -35,7 +107,9 @@ function listar() {
             '<button type="button" name="checksubasta" id="'+ resultado.datos[i].id_contrato +'" onclick="VistaModal(' +
             resultado.datos[i].id_contrato +
             ');" class="border-0 btn-transition btn btn-outline-success checksubasta"><i class="fa fa-check"></i></button>' +
-            '<button type="button" name="deletesubasta" class="border-0 btn-transition btn btn-outline-danger deletesubasta"><i class="fa fa-trash-alt"></i></button>' +
+            '<button type="button" name="deletesubasta" id="'+ resultado.datos[i].id_contrato +'" onclick="VistaModalValor(' +
+            resultado.datos[i].id_contrato +
+            ');" class="border-0 btn-transition btn btn-outline-warning deletesubasta"><i class="fas fa-star"></i></button>' +
             "</div></td></tr>";
 
           $("#tbsubasta tbody").append(adicion);
@@ -50,6 +124,12 @@ function listar() {
     });
 }
 
+$('#ModalVer').on('hidden.bs.modal', function () {
+  $('#rateit1').rateit('value',0);
+  $('#valorcomentario').val('');
+  $('#calif').empty();
+})
+
 function LimpiarSubasta(){
   clearTimeout(idtimeout);
   document.getElementById('ruta').innerHTML = "";
@@ -62,6 +142,23 @@ function VistaModal (codcontrato) {
   $("#" + idcontrato).attr("onclick","LimpiarSubasta()");
   
  autoupdate(codcontrato);
+
+}
+
+function VistaModalValor (codcontrato) {
+  idcontrato = codcontrato;
+  //document.getElementById('ruta').innerHTML = "";
+  //$("#" + idcontrato).attr("onclick","LimpiarSubasta()");
+
+  $('#ModalVer').modal('show');
+ //autoupdate(codcontrato);
+
+  var datos = '<div id="CodContrato" style="display: none;">' + codcontrato + '</div>';
+
+
+  $("[id=calif]").append(datos);
+
+
 
 }
 

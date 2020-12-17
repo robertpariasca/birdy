@@ -109,14 +109,19 @@ class PropuestaPostulantesDetalle extends Conexion
 
             $sql = "
                         select 
-                            id_conductor,
-                            nom_chofer,
-                            id_auto,
-                            placa_auto
+                            p.id_conductor,
+                            p.nom_chofer,
+                            p.id_auto,
+                            p.placa_auto,
+                            c.num_telefono
                         from 
-                            propuesta_postulantes_detalles
+                            propuesta_postulantes_detalles p
+                        inner join
+                            conductor c
+                        on
+                            p.id_conductor = c.id_conductor
                         where
-                            id_postulante_propuesta = :p_idpostulantepropuesta;
+                            p.id_postulante_propuesta = :p_idpostulantepropuesta;
                 ";
 
             $sentencia = $this->dblink->prepare($sql);

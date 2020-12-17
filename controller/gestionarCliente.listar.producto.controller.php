@@ -8,8 +8,7 @@ try {
     $objProducto = new Producto();
     session_name("Birdy");
     session_start();
-    $objProducto->setCodproveedor($_SESSION["cod_acceso"]);
-    $resultado = $objProducto->listar();
+    $resultado = $objProducto->listarTodo();
     
     Helper::imprimeJSON(200, "", $resultado);
 } catch (Exception $exc) {

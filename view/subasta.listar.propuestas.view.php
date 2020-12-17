@@ -106,6 +106,7 @@ $_POST["s_usuario"] = $dniSesion;
                                           <th>Conductor</th>
                                           <th style="display:none;">Id Auto</th>
                                           <th>Placa</th>
+                                          <th>Teléfono</th>
                                         </tr>
                                       </thead>
                                       <tbody>

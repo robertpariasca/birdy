@@ -9,6 +9,19 @@ $(document).ready(function () {
   $(".envioPropuesta").click(function (e) {
     e.preventDefault();
 
+    var nomModal = $(this)
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+
+    .attr('id');
+
     $(this)
       .siblings()
       .each(function () {
@@ -43,6 +56,9 @@ $(document).ready(function () {
           EnvioCorreo(codTipo, nroPropuesta, costo, detalles);
 
           swal("Propuesta Aceptada", datosJSON.mensaje, "success");
+
+          $('#'+ nomModal).modal('hide');
+          location.reload();
         } else {
         }
       })
@@ -199,7 +215,7 @@ $(document).ready(function () {
           swal("Propuesta Aceptada", datosJSON.mensaje, "success");
 
           $('#'+ nomModal).modal('hide');
-          
+          location.reload();
 
         } else {
         }

@@ -78,6 +78,9 @@ function VistaModal (nropropuesta) {
               "</td>" +
               '<td class="placaauto">' +
               resultado.datos[i].placa_auto +
+              "</td>" +
+              '<td class="numtelefono">' +
+              resultado.datos[i].num_telefono +
               "</td>";
 
             adicion +=
